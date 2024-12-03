@@ -5,6 +5,7 @@ on:
     # Publish `master` as Docker `latest` image.
     branches:
       - master
+      - s390x_build
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -39,7 +40,7 @@ jobs:
       - name: Run tests
         uses: docker/build-push-action@v5
         with:
-          platforms: linux/amd64, linux/arm64/v8
+          platforms: linux/amd64, linux/arm64/v8, linux/s390x
           context: python
           file: python/storage-initializer.Dockerfile
           push: false
@@ -93,7 +94,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          platforms: linux/amd64, linux/arm64/v8
+          platforms: linux/amd64, linux/arm64/v8, linux/s390x
           context: python
           file: python/storage-initializer.Dockerfile
           push: true
